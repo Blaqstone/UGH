@@ -42,15 +42,15 @@ class House:
         if next_room := self.current_room.go_to(direction):
             self.current_room = next_room
         return next_room
-house_rooms = [cellar := Room('Cellar'), library := Room('Library'), dining_room := Room('Dining Room'),
-               gallery := Room('Gallery'), bedroom := Room('Bedroom', east=cellar),
-               dungeon := Room('Dungeon', east=gallery),
-               kitchen := Room('Kitchen', north=dining_room),
-               great_hall := Room('Great Hall', south=bedroom, north=dungeon, west=library, east=kitchen)]
+house_rooms = [entryway := Room('Entryway'), kitchen := Room('Kitchen'), armory := Room('Armory'),
+               bedroom := Room('Bedroom'), sittingroom := Room('Sitting Room', east=entryway),
+               library := Room('Library', east=bedroom),
+               dining_room := Room('Dining Room', north=armory),
+               hoard := Room('Hoard', south=sittingroom, north=library, west=kitchen, east=dining_room)]
 
-house = House(current_room=great_hall, rooms=house_rooms)
+house = House(current_room=hoard, rooms=house_rooms)
 
-house = House(current_room=great_hall, rooms=house_rooms)
+house = House(current_room=hoard, rooms=house_rooms)
 
 def prompt(text: str):
     print(text)
